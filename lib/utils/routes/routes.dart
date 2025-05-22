@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm/utils/routes/routes_name.dart';
-import 'package:mvvm/view/home_screen.dart';
-import 'package:mvvm/view/login_screen.dart';
+import 'package:mvvm/view/home_view.dart';
+import 'package:mvvm/view/login_view.dart';
+import 'package:mvvm/view/signup_view.dart';
+import 'package:mvvm/view/splash_view.dart';
 
 class Routes {
 
@@ -10,9 +12,14 @@ class Routes {
 
     switch(settings.name){
 
+      case RoutesName.splash:
+        return MaterialPageRoute(builder: (context)=> SplashView());
 
       case RoutesName.login:
-        return MaterialPageRoute(builder: (context)=> LoginScreen());
+        return MaterialPageRoute(builder: (context)=> LoginView());
+
+      case RoutesName.signUp:
+        return MaterialPageRoute(builder: (context)=> SignupView());
 
       case RoutesName.home:
         return MaterialPageRoute(builder: (context)=> HomeScreen());

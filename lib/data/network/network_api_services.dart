@@ -18,11 +18,12 @@ class NetworkApiServices extends BaseApiServices{
     return responseJson;
   }
   @override
-  Future getPostApiServices (String url, dynamic data) async {
+  Future getPostApiServices (String url, dynamic data, dynamic headers) async {
     dynamic responseJson;
     try{
       Response response = await post(Uri.parse(url),
-      body: data
+      body: data,
+        headers: headers,
       ).timeout(Duration(seconds: 10));
       responseJson = returnResponse(response);
     }on SocketException{
