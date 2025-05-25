@@ -5,6 +5,15 @@ import 'package:another_flushbar/flushbar.dart';
 
 class Utils {
 
+  static double averageRating(List<num>? rating){
+    if(rating == " " || rating!.isEmpty) return 0.0;
+    num avgRating = 0;
+    for(int i = 0; i < rating.length; i++){
+      avgRating = avgRating + rating[i];
+    }
+    return double.parse((avgRating/rating.length).toStringAsFixed(1));
+  }
+
   static void changeFieldFocus(
       BuildContext context,
       FocusNode current,

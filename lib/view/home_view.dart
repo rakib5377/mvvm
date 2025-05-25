@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm/data/response/status.dart';
 import 'package:mvvm/utils/routes/routes_name.dart';
+import 'package:mvvm/utils/utils.dart';
 import 'package:mvvm/view_model/home_view_model.dart';
 import 'package:mvvm/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
@@ -57,7 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             leading: SizedBox(
                               height: 50,
                               width: 50,
+                              // child: Image.network(height: 50,width: 50,
+                              //   movieList.posterurl.toString(),
+                              //   errorBuilder: (context, error, stackTrace) {
+                              //     return Icon(Icons.error);
+                              //   },
+                              // )
                               child: Image.network(
+                                height: 50,width: 40,
                                 movieList.posterurl ?? '',
                                 fit: BoxFit.cover,
                                 errorBuilder: (context, error, stackTrace) {
@@ -73,6 +81,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             title: Text(movieList.title.toString()),
                             subtitle: Text(movieList.year.toString()),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(Utils.averageRating(movieList.ratings).toStringAsFixed(1),style: TextStyle(fontSize: 16),),
+                                Icon(Icons.star, color: Colors.amber,)
+                              ],
+                            ),
                           ),
                         ],
                       ),
